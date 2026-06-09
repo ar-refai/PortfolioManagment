@@ -1,6 +1,6 @@
 ﻿namespace PortfolioManagement.Domain.Entities
 {
-    public class Portfolio
+    public class Portofolio
     {
         public Guid Id { get; private set; }
         public string UserId { get; private set; }
@@ -10,8 +10,8 @@
 
         public IReadOnlyCollection<Asset> Assets => _assets.AsReadOnly();
 
-        private Portfolio() { }
-        public Portfolio(string userId, string name)
+        private Portofolio() { }
+        public Portofolio(string userId, string name)
         {
             if (string.IsNullOrEmpty(userId)) throw new ArgumentNullException("You must provide user id");
             Id = Guid.NewGuid();

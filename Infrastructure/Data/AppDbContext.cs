@@ -7,12 +7,12 @@ namespace PortfolioManagement.Infrastructure.Data
     {
         public AppDbContext(DbContextOptions options) : base(options){}
         public DbSet<Asset> Assets => Set<Asset>();
-        public DbSet<Portfolio> Portfolios => Set<Portfolio>();
+        public DbSet<Portofolio> Portfolios => Set<Portofolio>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             // configure the portofolio entity
-            modelBuilder.Entity<Portfolio>(builder =>
+            modelBuilder.Entity<Portofolio>(builder =>
             {
                 builder.HasKey(p => p.Id);
                 builder.Property(p => p.Name).HasMaxLength(100);
@@ -21,7 +21,7 @@ namespace PortfolioManagement.Infrastructure.Data
                        .WithOne()
                        .HasForeignKey("PortfolioId")
                        .OnDelete(DeleteBehavior.Cascade);
-                builder.Metadata.FindNavigation(nameof(Portfolio.Assets))!.SetPropertyAccessMode(PropertyAccessMode.Field);
+                builder.Metadata.FindNavigation(nameof(Portofolio.Assets))!.SetPropertyAccessMode(PropertyAccessMode.Field);
             });
             modelBuilder.Entity<Asset>(builder =>
             {
